@@ -127,8 +127,21 @@ nav:
       - "Тема 12. Качество кода":
           - topics/12-code-quality-and-testing/index.md
           - "Лекция 1. Тестирование": topics/12-code-quality-and-testing/lecture-01-testing.md
-      - "Тема 13. Go — основы": topics/13-golang-basics/index.md
-      - "Тема 14. Go — продвинутый": topics/14-golang-advanced/index.md
+      - "Тема 13. Go — основы":
+          - topics/13-golang-basics/index.md
+          - "Лекция 1. Знакомство с Go": topics/13-golang-basics/lecture-01-intro.md
+          - "Лекция 2. Типы и управляющие конструкции": topics/13-golang-basics/lecture-02-types-control-flow.md
+          - "Лекция 3. Функции и ошибки": topics/13-golang-basics/lecture-03-functions-errors.md
+          - "Лекция 4. Композитные типы": topics/13-golang-basics/lecture-04-composite-types.md
+          - "Лекция 5. Методы и интерфейсы": topics/13-golang-basics/lecture-05-methods-interfaces.md
+          - "Лекция 6. Пакеты и тестирование": topics/13-golang-basics/lecture-06-packages-testing.md
+      - "Тема 14. Go — продвинутый":
+          - topics/14-golang-advanced/index.md
+          - "Лекция 1. Конкурентность": topics/14-golang-advanced/lecture-01-concurrency.md
+          - "Лекция 2. Context": topics/14-golang-advanced/lecture-02-context.md
+          - "Лекция 3. HTTP-клиент и сервер": topics/14-golang-advanced/lecture-03-http.md
+          - "Лекция 4. Файлы, JSON, БД": topics/14-golang-advanced/lecture-04-files-json-db.md
+          - "Лекция 5. Бенчмарки и pprof": topics/14-golang-advanced/lecture-05-benchmarks-pprof.md
   - Лабораторные: labs/index.md
   - Практика:
       - practice/index.md

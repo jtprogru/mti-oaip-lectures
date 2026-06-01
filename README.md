@@ -101,6 +101,21 @@
 - Лабораторная работа 2 (4 часа)   
 Оформление, отладка кода программы.
 
+## [Тема 13. Основы Go (Golang Basics)](/docs/topics/13-golang-basics/index.md)
++ [Лекция 1. Знакомство с Go](/docs/topics/13-golang-basics/lecture-01-intro.md)<br/>История, установка, `go mod`, первая программа, инструментарий.
++ [Лекция 2. Переменные, типы и управляющие конструкции](/docs/topics/13-golang-basics/lecture-02-types-control-flow.md)<br/>`var`/`const`/`iota`, базовые типы, `if`/`for`/`switch`, `defer`, указатели.
++ [Лекция 3. Функции, ошибки и `panic`/`recover`](/docs/topics/13-golang-basics/lecture-03-functions-errors.md)<br/>Multiple return, variadic, functional options, `error` как значение, `errors.Is`/`errors.As`.
++ [Лекция 4. Композитные типы](/docs/topics/13-golang-basics/lecture-04-composite-types.md)<br/>Массивы, срезы, карты, структуры, теги, embedding.
++ [Лекция 5. Методы и интерфейсы](/docs/topics/13-golang-basics/lecture-05-methods-interfaces.md)<br/>Receiver, structural typing, `any`, type switch, дженерики.
++ [Лекция 6. Пакеты и тестирование](/docs/topics/13-golang-basics/lecture-06-packages-testing.md)<br/>`internal/`, `go mod`, `testing`, табличные тесты, бенчмарки, fuzz.
+
+## [Тема 14. Продвинутый Go (Golang Advanced)](/docs/topics/14-golang-advanced/index.md)
++ [Лекция 1. Конкурентность](/docs/topics/14-golang-advanced/lecture-01-concurrency.md)<br/>Горутины, каналы, `select`, `sync` пакет, worker pool, fan-in/fan-out, pipeline.
++ [Лекция 2. Context](/docs/topics/14-golang-advanced/lecture-02-context.md)<br/>`context.Context`, `WithCancel`/`WithTimeout`/`WithDeadline`/`WithValue`.
++ [Лекция 3. HTTP-клиент и HTTP-сервер](/docs/topics/14-golang-advanced/lecture-03-http.md)<br/>`net/http`, роутинг Go 1.22+, middleware, graceful shutdown.
++ [Лекция 4. Файлы, JSON и БД](/docs/topics/14-golang-advanced/lecture-04-files-json-db.md)<br/>`os`/`io`/`bufio`, `embed.FS`, `encoding/json`, `database/sql`.
++ [Лекция 5. Бенчмарки и pprof](/docs/topics/14-golang-advanced/lecture-05-benchmarks-pprof.md)<br/>`Benchmark*`, `benchstat`, `pprof`, `-race`, escape analysis.
+
 [Задание на практику](/docs/practice/practice.md) — большой сквозной проект «распределённая система оплаты услуг» с GUI, HTTP, БД, логированием и тестами.
 
 Дополнительно: [шпаргалка по типам и scope](/docs/practice/cheatsheet.md), [системы контроля версий и Git](/docs/practice/version-control.md).
