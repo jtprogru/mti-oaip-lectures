@@ -1,123 +1,46 @@
 # Основы алгоритмизации и программирования
 
-## [Тема 1. Основные принципы алгоритмизации и программирования](/docs/topics/01-algorithm-basics/index.md)
-+ [Лекция 1. Основные понятия алгоритмизации](/docs/topics/01-algorithm-basics/lecture-01-basics.md)<br/>
-Понятие алгоритма. Свойства алгоритма. Формы записи алгоритмов. Общие принципы построения алгоритмов. Определение сложности работы алгоритмов.
-+ [Лекция 2. Основные алгоритмические конструкции](/docs/topics/01-algorithm-basics/lecture-02-constructs.md)<br/>
-Линейные, разветвляющиеся, циклические алгоритмы. Программы для графического отображения алгоритмов.
-+ [Лекции 3 и 4. Логические основы алгоритмизации](/docs/topics/01-algorithm-basics/lecture-03-logic.md) (4 часа)<br/>
-Основы алгебры логики. Логические операции с высказываниями: конъюнкция, дизъюнкция, инверсия. Законы логических операций. Таблицы истинности.
+[![Сайт курса](https://img.shields.io/badge/site-jtprogru.github.io%2Fmti--oaip--lectures-2ea44f?logo=github)](https://jtprogru.github.io/mti-oaip-lectures/)
+[![MkDocs Material](https://img.shields.io/badge/MkDocs-Material-526CFE?logo=materialformkdocs)](https://squidfunk.github.io/mkdocs-material/)
+[![Python 3.14](https://img.shields.io/badge/Python-3.14-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Go 1.23](https://img.shields.io/badge/Go-1.23-00ADD8?logo=go&logoColor=white)](https://go.dev/)
 
-- Лабораторная работа 1  
-Разработка алгоритмов для конкретных задач.
-- Лабораторная работа 2  
-Использование программ для графического отображения алгоритмов.
-- Лабораторная работа 3  
-Определение сложности работы алгоритмов.
+Материалы курса «Основы алгоритмизации и программирования» (МТИ, ОАиП). Современная переработка: вместо Pascal/Delphi — параллельные примеры на **Python 3.14** и **Go 1.23**, актуальные инструменты (`uv`, `go mod`, VS Code), сквозной практический проект.
 
-## [Тема 2. Языки и методы программирования](/docs/topics/02-languages-and-methods/index.md)
-+ [Лекция 1. Языки и системы программирования](/docs/topics/02-languages-and-methods/lecture-01-languages.md)<br/>
-Эволюция и классификация языков программирования. Компиляция и интерпретация. Понятие системы программирования. Исходный, объектный и загрузочный модули. IDE (Visual Studio Code).
-+ [Лекция 2. Методы программирования и SDLC](/docs/topics/02-languages-and-methods/lecture-02-methods.md)<br/>
-Структурный, модульный, объектно-ориентированный методы. Общие принципы разработки ПО. Жизненный цикл программного обеспечения. Типы приложений.
+## Где смотреть
 
-## [Тема 3. Программирование на Python (Python Basics)](/docs/topics/03-python-basics/index.md)
-+ [Лекция 1. Синтаксис, переменные и типы данных](/docs/topics/03-python-basics/lecture-01-syntax-types.md)<br/>Лексика, отступы, идентификаторы, ключевые слова; простые типы (`int`, `float`, `str`, `bool`, `None`); операторы и приоритет; параллель Go — статическая типизация, фиксированные размеры целых.
-+ [Лекция 2. Управляющие конструкции и ввод-вывод](/docs/topics/03-python-basics/lecture-02-control-flow-io.md)<br/>`if`/`elif`/`else`, тернарный, `match`; `while`, `for` + `range`; `break`/`continue`/`else`; `input` / `print`; в Go — `if` с инициализацией, `switch`, `for` как единственный цикл.
-+ [Лекция 3. Коллекции: списки, кортежи, словари, множества](/docs/topics/03-python-basics/lecture-03-collections.md)<br/>Списки и генераторы списков, кортежи и распаковка, словари (`get`/`setdefault`/`defaultdict`/`Counter`), множества и математические операции; в Go — slices, maps, structs, `map[T]struct{}` как set.
-+ [Лекция 4. Машинное представление: числа, кодировки, байты](/docs/topics/03-python-basics/lecture-04-encodings-bytes.md)<br/>Системы счисления, дополнительный код, IEEE 754; ASCII/Unicode/UTF-8/UTF-16; `bytes`/`bytearray`/`memoryview` в Python; `string`/`[]byte`/`rune` в Go.
+- **Сайт курса:** <https://jtprogru.github.io/mti-oaip-lectures/>
+- **Исходники лекций:** [`docs/topics/`](docs/topics/)
+- **Примеры кода:** [`src/python/`](src/python/), [`src/golang/`](src/golang/)
+- **Практическое задание:** [`docs/practice/practice.md`](docs/practice/practice.md)
+- **Экзаменационные билеты:** [`docs/tickets/index.md`](docs/tickets/index.md)
 
-- Лабораторная работа 1<br/>Работа в среде программирования. Реализация построенных алгоритмов.
-- Лабораторная работа 2 (4 часа)<br/>Составление программ линейной структуры. Составление программ разветвляющейся структуры.
-- Лабораторная работа 3 (4 часа)<br/>Составление программ циклической структуры. Обработка одномерных и двумерных массивов.
-- Лабораторная работа 4<br/>Работа со строковыми переменными. Работа с данными типа множество.
+## Состав курса
 
-## [Тема 4. Подпрограммы и работа с файлами](/docs/topics/04-procedures-and-files/index.md)
-+ [Лекция 1. Функции и область видимости](/docs/topics/04-procedures-and-files/lecture-01-functions.md)<br/>Подпрограммы; `def`; аргументы (позиционные, именованные, `*args`/`**kwargs`, default); LEGB; `global`/`nonlocal`; `lambda`, замыкания; передача по ссылке/значению; в Go — multiple return, variadic, functional options.
-+ [Лекция 2. Строки и рекурсия](/docs/topics/04-procedures-and-files/lecture-02-strings-recursion.md)<br/>Методы строк, f-strings, кодировки; рекурсия (факториал, Фибоначчи, бинарный поиск, обход дерева), мемоизация, ограничения стека.
-+ [Лекция 3. Работа с файлами и форматами данных](/docs/topics/04-procedures-and-files/lecture-03-files.md)<br/>Открытие/закрытие (`with`/`defer`), `pathlib` vs `os.path`, обход каталогов; форматы CSV/JSON/YAML/TOML/INI; `pickle` и его опасности.
-+ [Лекция 4. Бинарные файлы и произвольный доступ](/docs/topics/04-procedures-and-files/lecture-04-binary-random-access.md)<br/>`seek`/`tell`, `struct` (Python) и `encoding/binary` (Go), чтение заголовка WAV, `mmap` для больших файлов.
+14 тем: алгоритмизация → языки и методы → Python (синтаксис, функции, файлы, библиотеки, ООП) → VS Code и отладка → GUI-разработка → стандартная библиотека и шаблоны → HTTP/regex/SQLite/конкурентность → разработка приложений → качество кода и тестирование → **Go (основы и продвинутые темы)**.
 
-- Лабораторная работа 1 (4 часа)<br/>Организация и использование процедур.
-- Лабораторная работа 2 (4 часа)<br/>Организация и использование функций.
-- Лабораторная работа 3 (4 часа)<br/>Работа с файлами последовательного и произвольного доступа.
+Подробнее — на [главной сайта](https://jtprogru.github.io/mti-oaip-lectures/).
 
-## [Тема 5. Библиотеки и модули](/docs/topics/05-libraries-and-modules/index.md)
-+ [Лекция 1. Модули, пакеты и управление зависимостями](/docs/topics/05-libraries-and-modules/lecture-01-modules-packages.md) (4 часа)<br/>Модули и пакеты Python (`__init__.py`, `__main__.py`, `if __name__ == "__main__"`); `sys.path`; `pip` и современный `uv`; `pyproject.toml`, lock-файлы; виртуальные окружения; в Go — `go mod`, `go.sum`, vendoring; FFI через `ctypes` и `cgo`.
+## Локальная сборка
 
-- Лабораторная работа 1 (4 часа)<br/>Программирование модуля. Создание библиотеки подпрограмм.
+```bash
+# зависимости MkDocs (через uv)
+uv sync
 
-## [Тема 6. Основные принципы объектно-ориентированного программирования](/docs/topics/06-oop-principles/index.md)
-+ [Лекция 1. Базовые понятия ООП. Инкапсуляция, наследование, полиморфизм](/docs/topics/06-oop-principles/lecture-01-oop-basics.md)<br/>
-История ООП. Класс, объект, интерфейс. Принципы инкапсуляции, наследования, полиморфизма. Реализация ООП в Python и Go.
-+ [Лекция 2. Событийно-управляемая модель и компонентно-ориентированный подход](/docs/topics/06-oop-principles/lecture-02-event-driven.md)<br/>
-Генераторы и yield в Python, `asyncio`. Горутины и каналы в Go. Компонентно-ориентированное программирование.
+# просмотр с автоперезагрузкой
+uv run mkdocs serve
 
-## [Тема 7. Среда разработки: Visual Studio Code](/docs/topics/07-ide-vscode/index.md)
-+ [Лекция 1. VS Code: установка, расширения, отладка](/docs/topics/07-ide-vscode/lecture-01-setup.md)<br/>Переносной режим, русификация, расширение Python (Pylance, Ruff, debugpy), расширение Go (gopls, dlv), горячие клавиши.
-+ [Лекция 2. Параметры командной строки](/docs/topics/07-ide-vscode/lecture-02-cli-args.md)<br/>`sys.argv` и `os.Args`, `argparse`/`typer`, `flag`/`cobra`, отладка с `args` в `launch.json`.
-+ [Лекция 3. Ошибки, исключения и декораторы](/docs/topics/07-ide-vscode/lecture-03-errors-decorators.md)<br/>`try/except/finally`, `raise from`, собственные исключения, декораторы; `error` как значение в Go, `errors.Is/As`, `panic/recover`, middleware.
+# одноразовая сборка в ./site
+uv run mkdocs build
+```
 
-- Лабораторная работа 1 (10 часов)<br/>Создание простого проекта по индивидуальным заданиям.
+Go-примеры:
 
-## [Тема 8. Этапы разработки приложения](/docs/topics/08-app-development-stages/index.md)
-+ [Лекция 1. GUI на Tkinter](/docs/topics/08-app-development-stages/lecture-01-tkinter.md)<br/>Встроенный модуль `tkinter`, виджеты, упаковщики (`pack`/`grid`/`place`), события, `ttk`. Параллель: Fyne в Go.
-+ [Лекция 2. GUI на PyQt и Qt Designer](/docs/topics/08-app-development-stages/lecture-02-pyqt.md)<br/>PyQt6/PySide6, визуальный редактор Qt Designer, сигналы и слоты, `.ui`-файлы.
-+ [Лекция 3. Web-обёртка как UI: pywebview, CEF Python, Wails](/docs/topics/08-app-development-stages/lecture-03-web-ui.md)<br/>Встроенный браузер как окно приложения, биндинги Python/Go ↔ JavaScript.
+```bash
+cd src/golang/topic-13-basics && go test ./...
+cd src/golang/topic-14-advanced && go test ./...
+```
 
-## [Тема 9. Иерархия классов](/docs/topics/09-class-hierarchies/index.md)
-+ [Лекция 1. Стандартная библиотека Python и Go](/docs/topics/09-class-hierarchies/lecture-01-stdlib.md)<br/>Встроенные функции, основные модули.
-+ [Лекция 2. Шаблоны проектирования](/docs/topics/09-class-hierarchies/lecture-02-patterns.md) (4 часа)<br/>Порождающие, структурные, поведенческие шаблоны.
+## Атрибуция
 
-- Лабораторная работа 1 (6 часов)   
-Создание объектно-ориентированного приложения по индивидуальным заданиям.
-
-## [Тема 10. Стандартные модули Python](/docs/topics/10-standard-modules/index.md)
-+ [Лекция 1. HTTP-клиент и HTTP-сервер](/docs/topics/10-standard-modules/lecture-01-http.md)
-+ [Лекция 2. Регулярные выражения](/docs/topics/10-standard-modules/lecture-02-regex.md)
-+ [Лекция 3. SQLite](/docs/topics/10-standard-modules/lecture-03-sqlite.md)
-+ [Лекция 4. Конкурентность и потоки](/docs/topics/10-standard-modules/lecture-04-concurrency.md)
-
-- Лабораторная работа 1 (4 часа)   
-Создание проекта с использованием компонентов для работы с текстом.
-- Лабораторная работа 2 (6 часов)   
-Создание проекта с использованием компонентов стандартных диалогов и системы меню.
-
-## [Тема 11. Разработка приложений](/docs/topics/11-application-development/index.md)
-+ [Лекция 1. Логирование](/docs/topics/11-application-development/lecture-01-logging.md)
-- *Лекция 2. Django — основы фреймворка.* В разработке.
-- *Лекция 3. Django — обработка событий и API.* В разработке.
-- *Лекция 4. Компиляция в standalone.* В разработке.
-
-- Лабораторная работа 1 (4 часа)   
-Разработка оконного приложения. 
-- Лабораторная работа 2 (4 часа)   
-Разработка оконного приложения с несколькими формами.
-
-## [Тема 12. Качество кода и тестирование](/docs/topics/12-code-quality-and-testing/index.md)
-+ [Лекция 1. Качество кода и тестирование](/docs/topics/12-code-quality-and-testing/lecture-01-testing.md)<br/>
-`unittest` и `pytest` в Python, встроенный `testing` в Go, параметризация, fixtures, табличные тесты, покрытие.
-
-- Лабораторная работа 2 (4 часа)   
-Оформление, отладка кода программы.
-
-## [Тема 13. Основы Go (Golang Basics)](/docs/topics/13-golang-basics/index.md)
-+ [Лекция 1. Знакомство с Go](/docs/topics/13-golang-basics/lecture-01-intro.md)<br/>История, установка, `go mod`, первая программа, инструментарий.
-+ [Лекция 2. Переменные, типы и управляющие конструкции](/docs/topics/13-golang-basics/lecture-02-types-control-flow.md)<br/>`var`/`const`/`iota`, базовые типы, `if`/`for`/`switch`, `defer`, указатели.
-+ [Лекция 3. Функции, ошибки и `panic`/`recover`](/docs/topics/13-golang-basics/lecture-03-functions-errors.md)<br/>Multiple return, variadic, functional options, `error` как значение, `errors.Is`/`errors.As`.
-+ [Лекция 4. Композитные типы](/docs/topics/13-golang-basics/lecture-04-composite-types.md)<br/>Массивы, срезы, карты, структуры, теги, embedding.
-+ [Лекция 5. Методы и интерфейсы](/docs/topics/13-golang-basics/lecture-05-methods-interfaces.md)<br/>Receiver, structural typing, `any`, type switch, дженерики.
-+ [Лекция 6. Пакеты и тестирование](/docs/topics/13-golang-basics/lecture-06-packages-testing.md)<br/>`internal/`, `go mod`, `testing`, табличные тесты, бенчмарки, fuzz.
-
-## [Тема 14. Продвинутый Go (Golang Advanced)](/docs/topics/14-golang-advanced/index.md)
-+ [Лекция 1. Конкурентность](/docs/topics/14-golang-advanced/lecture-01-concurrency.md)<br/>Горутины, каналы, `select`, `sync` пакет, worker pool, fan-in/fan-out, pipeline.
-+ [Лекция 2. Context](/docs/topics/14-golang-advanced/lecture-02-context.md)<br/>`context.Context`, `WithCancel`/`WithTimeout`/`WithDeadline`/`WithValue`.
-+ [Лекция 3. HTTP-клиент и HTTP-сервер](/docs/topics/14-golang-advanced/lecture-03-http.md)<br/>`net/http`, роутинг Go 1.22+, middleware, graceful shutdown.
-+ [Лекция 4. Файлы, JSON и БД](/docs/topics/14-golang-advanced/lecture-04-files-json-db.md)<br/>`os`/`io`/`bufio`, `embed.FS`, `encoding/json`, `database/sql`.
-+ [Лекция 5. Бенчмарки и pprof](/docs/topics/14-golang-advanced/lecture-05-benchmarks-pprof.md)<br/>`Benchmark*`, `benchstat`, `pprof`, `-race`, escape analysis.
-
-[Задание на практику](/docs/practice/practice.md) — большой сквозной проект «распределённая система оплаты услуг» с GUI, HTTP, БД, логированием и тестами.
-
-Дополнительно: [шпаргалка по типам и scope](/docs/practice/cheatsheet.md), [системы контроля версий и Git](/docs/practice/version-control.md).
-
-## [Экзаменационные билеты](/docs/tickets/index.md)
+Курс основан на материалах [kolei/OAP_backup](https://github.com/kolei/OAP_backup) (исходный курс на Pascal/Delphi). Содержание переработано под современный стек, добавлены параллельные примеры на Go, обновлены инструменты и практические задания.
