@@ -73,7 +73,11 @@ markdown_extensions:
 nav:
   - Главная: index.md
   - Темы:
-      - "Тема 1. Алгоритмизация": topics/01-algorithm-basics/index.md
+      - "Тема 1. Алгоритмизация":
+          - topics/01-algorithm-basics/index.md
+          - "Лекция 1. Основные понятия": topics/01-algorithm-basics/lecture-01-basics.md
+          - "Лекция 2. Алгоритмические конструкции": topics/01-algorithm-basics/lecture-02-constructs.md
+          - "Лекции 3–4. Логические основы": topics/01-algorithm-basics/lecture-03-logic.md
       - "Тема 2. Языки и методы": topics/02-languages-and-methods/index.md
       - "Тема 3. Python — основы": topics/03-python-basics/index.md
       - "Тема 4. Процедуры и файлы": topics/04-procedures-and-files/index.md
