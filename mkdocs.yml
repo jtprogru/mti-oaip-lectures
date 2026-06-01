@@ -72,3 +72,21 @@ markdown_extensions:
 
 nav:
   - Главная: index.md
+  - Темы:
+      - "Тема 1. Алгоритмизация": topics/01-algorithm-basics/index.md
+      - "Тема 2. Языки и методы": topics/02-languages-and-methods/index.md
+      - "Тема 3. Python — основы": topics/03-python-basics/index.md
+      - "Тема 4. Процедуры и файлы": topics/04-procedures-and-files/index.md
+      - "Тема 5. Библиотеки и модули": topics/05-libraries-and-modules/index.md
+      - "Тема 6. ООП": topics/06-oop-principles/index.md
+      - "Тема 7. VS Code": topics/07-ide-vscode/index.md
+      - "Тема 8. Этапы разработки": topics/08-app-development-stages/index.md
+      - "Тема 9. Иерархия классов": topics/09-class-hierarchies/index.md
+      - "Тема 10. Стандартные модули": topics/10-standard-modules/index.md
+      - "Тема 11. Разработка приложений": topics/11-application-development/index.md
+      - "Тема 12. Качество кода": topics/12-code-quality-and-testing/index.md
+      - "Тема 13. Go — основы": topics/13-golang-basics/index.md
+      - "Тема 14. Go — продвинутый": topics/14-golang-advanced/index.md
+  - Лабораторные: labs/index.md
+  - Практика: practice/index.md
+  - Билеты: tickets/index.md
