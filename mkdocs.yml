@@ -124,6 +124,9 @@ nav:
       - "Тема 11. Разработка приложений":
           - topics/11-application-development/index.md
           - "Лекция 1. Логирование": topics/11-application-development/lecture-01-logging.md
+          - "Лекция 2. Django — основы": topics/11-application-development/lecture-02-django-basics.md
+          - "Лекция 3. Django — формы и API": topics/11-application-development/lecture-03-django-events-api.md
+          - "Лекция 4. Компиляция в standalone": topics/11-application-development/lecture-04-standalone.md
       - "Тема 12. Качество кода":
           - topics/12-code-quality-and-testing/index.md
           - "Лекция 1. Тестирование": topics/12-code-quality-and-testing/lecture-01-testing.md

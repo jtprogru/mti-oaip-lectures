@@ -85,9 +85,9 @@
 
 ## [Тема 11. Разработка приложений](topics/11-application-development/index.md)
 + [Лекция 1. Логирование](topics/11-application-development/lecture-01-logging.md)<br/>Модуль `logging` в Python, `log/slog` в Go.
-- *Лекция 2. Django — основы фреймворка.* В разработке.
-- *Лекция 3. Django — обработка событий и API.* В разработке.
-- *Лекция 4. Компиляция в standalone.* В разработке.
++ [Лекция 2. Django — основы фреймворка](topics/11-application-development/lecture-02-django-basics.md)<br/>MVT, модели и миграции, ORM, маршруты, views, шаблоны, готовая админка.
++ [Лекция 3. Django — формы, сигналы и REST API](topics/11-application-development/lecture-03-django-events-api.md)<br/>`ModelForm`, аутентификация, сигналы, DRF, JWT.
++ [Лекция 4. Компиляция в standalone](topics/11-application-development/lecture-04-standalone.md)<br/>PyInstaller, Nuitka, Briefcase для Python; `go build` и кросс-компиляция; Docker.
 
 - Лабораторная работа 1 (4 часа)   
 Разработка оконного приложения. 
