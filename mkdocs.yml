@@ -101,6 +101,7 @@ nav:
           - topics/06-oop-principles/index.md
           - "Лекция 1. Базовые понятия ООП": topics/06-oop-principles/lecture-01-oop-basics.md
           - "Лекция 2. Событийная модель и компоненты": topics/06-oop-principles/lecture-02-event-driven.md
+          - "Лекция 3. SOLID-принципы": topics/06-oop-principles/lecture-03-solid.md
       - "Тема 7. VS Code":
           - topics/07-ide-vscode/index.md
           - "Лекция 1. VS Code: установка и настройка": topics/07-ide-vscode/lecture-01-setup.md
@@ -130,6 +131,7 @@ nav:
       - "Тема 12. Качество кода":
           - topics/12-code-quality-and-testing/index.md
           - "Лекция 1. Тестирование": topics/12-code-quality-and-testing/lecture-01-testing.md
+          - "Лекция 2. Продвинутое тестирование": topics/12-code-quality-and-testing/lecture-02-advanced-testing.md
       - "Тема 13. Go — основы":
           - topics/13-golang-basics/index.md
           - "Лекция 1. Знакомство с Go": topics/13-golang-basics/lecture-01-intro.md

@@ -52,6 +52,8 @@
 История ООП. Класс, объект, интерфейс. Принципы инкапсуляции, наследования, полиморфизма. Реализация ООП в Python и Go.
 + [Лекция 2. Событийно-управляемая модель и компонентно-ориентированный подход](topics/06-oop-principles/lecture-02-event-driven.md)<br/>
 Генераторы и yield в Python, `asyncio`. Горутины и каналы в Go. Компонентно-ориентированное программирование.
++ [Лекция 3. SOLID-принципы](topics/06-oop-principles/lecture-03-solid.md)<br/>
+SRP, OCP, LSP, ISP, DIP — антипримеры и рефакторинг на Python и Go. Связь с шаблонами проектирования.
 
 ## [Тема 7. Среда разработки: Visual Studio Code](topics/07-ide-vscode/index.md)
 + [Лекция 1. VS Code: установка, расширения, отладка](topics/07-ide-vscode/lecture-01-setup.md)<br/>Переносной режим, русификация, расширение Python (Pylance, Ruff, debugpy), расширение Go (gopls, dlv), горячие клавиши.
@@ -97,6 +99,8 @@
 ## [Тема 12. Качество кода и тестирование](topics/12-code-quality-and-testing/index.md)
 + [Лекция 1. Качество кода и тестирование](topics/12-code-quality-and-testing/lecture-01-testing.md)<br/>
 `unittest` и `pytest` в Python, встроенный `testing` в Go, параметризация, fixtures, табличные тесты, покрытие.
++ [Лекция 2. Продвинутое тестирование](topics/12-code-quality-and-testing/lecture-02-advanced-testing.md)<br/>
+Моки (`unittest.mock`, `gomock`), property-based (Hypothesis, `rapid`), интеграционные тесты с testcontainers, линтеры/security-сканеры/coverage gates в CI.
 
 - Лабораторная работа 2 (4 часа)   
 Оформление, отладка кода программы.
