@@ -77,21 +77,17 @@
 + [Лекция 2. Событийно-управляемая модель и компонентно-ориентированный подход](/docs/topics/06-oop-principles/lecture-02-event-driven.md)<br/>
 Генераторы и yield в Python, `asyncio`. Горутины и каналы в Go. Компонентно-ориентированное программирование.
 
-## Тема 7. Знакомство со средой разработчика Delphi, Visual Studio Code
-* [Лекция 1](/articles/t7l1.md)<br/>
-Требования к аппаратным и программным средствам интегрированной среды разработчика. Интерфейс среды разработчика: характеристика, основные окна, инструменты, объекты.
-+ [Лекция 2](/articles/t7l1.md)<br/>
-Форма и размещение на ней управляющих элементов. Панель компонентов и их свойства. Окно кода проекта.
-+ [Лекция 3](/articles/t7l3.md)<br/>Параметры командной строки
-+ [Лекция 4](/articles/t7l4.md)<br/>
-Ошибки и исключения. Декораторы.
+## [Тема 7. Среда разработки: Visual Studio Code](/docs/topics/07-ide-vscode/index.md)
++ [Лекция 1. VS Code: установка, расширения, отладка](/docs/topics/07-ide-vscode/lecture-01-setup.md)<br/>Переносной режим, русификация, расширение Python (Pylance, Ruff, debugpy), расширение Go (gopls, dlv), горячие клавиши.
++ [Лекция 2. Параметры командной строки](/docs/topics/07-ide-vscode/lecture-02-cli-args.md)<br/>`sys.argv` и `os.Args`, `argparse`/`typer`, `flag`/`cobra`, отладка с `args` в `launch.json`.
++ [Лекция 3. Ошибки, исключения и декораторы](/docs/topics/07-ide-vscode/lecture-03-errors-decorators.md)<br/>`try/except/finally`, `raise from`, собственные исключения, декораторы; `error` как значение в Go, `errors.Is/As`, `panic/recover`, middleware.
 
-- Лабораторная работа 1 (10 часов)   
-Создание простого проекта по индивидуальным заданиям.
+- Лабораторная работа 1 (10 часов)<br/>Создание простого проекта по индивидуальным заданиям.
 
-## Тема 8. Этапы разработки приложения
-+ [Лекция 1](/articles/t8l1.md)<br/>Python GUI: создаём простое приложение с PyQt и Qt Designer
-+ [Лекция 2](/articles/t8l2.md)<br/>Создание оконного приложения на базе Cromium Embedded Framework.
+## [Тема 8. Этапы разработки приложения](/docs/topics/08-app-development-stages/index.md)
++ [Лекция 1. GUI на Tkinter](/docs/topics/08-app-development-stages/lecture-01-tkinter.md)<br/>Встроенный модуль `tkinter`, виджеты, упаковщики (`pack`/`grid`/`place`), события, `ttk`. Параллель: Fyne в Go.
++ [Лекция 2. GUI на PyQt и Qt Designer](/docs/topics/08-app-development-stages/lecture-02-pyqt.md)<br/>PyQt6/PySide6, визуальный редактор Qt Designer, сигналы и слоты, `.ui`-файлы.
++ [Лекция 3. Web-обёртка как UI: pywebview, CEF Python, Wails](/docs/topics/08-app-development-stages/lecture-03-web-ui.md)<br/>Встроенный браузер как окно приложения, биндинги Python/Go ↔ JavaScript.
 
 ## [Тема 9. Иерархия классов](/docs/topics/09-class-hierarchies/index.md)
 + [Лекция 1. Стандартная библиотека Python и Go](/docs/topics/09-class-hierarchies/lecture-01-stdlib.md)<br/>Встроенные функции, основные модули.

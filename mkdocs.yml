@@ -89,8 +89,16 @@ nav:
           - topics/06-oop-principles/index.md
           - "Лекция 1. Базовые понятия ООП": topics/06-oop-principles/lecture-01-oop-basics.md
           - "Лекция 2. Событийная модель и компоненты": topics/06-oop-principles/lecture-02-event-driven.md
-      - "Тема 7. VS Code": topics/07-ide-vscode/index.md
-      - "Тема 8. Этапы разработки": topics/08-app-development-stages/index.md
+      - "Тема 7. VS Code":
+          - topics/07-ide-vscode/index.md
+          - "Лекция 1. VS Code: установка и настройка": topics/07-ide-vscode/lecture-01-setup.md
+          - "Лекция 2. Параметры командной строки": topics/07-ide-vscode/lecture-02-cli-args.md
+          - "Лекция 3. Ошибки, исключения, декораторы": topics/07-ide-vscode/lecture-03-errors-decorators.md
+      - "Тема 8. Этапы разработки":
+          - topics/08-app-development-stages/index.md
+          - "Лекция 1. GUI на Tkinter": topics/08-app-development-stages/lecture-01-tkinter.md
+          - "Лекция 2. GUI на PyQt и Qt Designer": topics/08-app-development-stages/lecture-02-pyqt.md
+          - "Лекция 3. Web-обёртка как UI": topics/08-app-development-stages/lecture-03-web-ui.md
       - "Тема 9. Иерархия классов":
           - topics/09-class-hierarchies/index.md
           - "Лекция 1. Стандартная библиотека": topics/09-class-hierarchies/lecture-01-stdlib.md
