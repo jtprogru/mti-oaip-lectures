@@ -93,45 +93,38 @@
 + [Лекция 1](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t8l1.md)<br/>Python GUI: создаём простое приложение с PyQt и Qt Designer
 + [Лекция 2](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t8l2.md)<br/>Создание оконного приложения на базе Cromium Embedded Framework.
 
-## Тема 9. Иерархия классов  
-+ [Лекция 1](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t9l1.md)<br/>Стандартныя типы и модули Python
-+ [Лекция 2](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t9l1p2.md) (4 часа)<br/>Шаблоны проектирования
+## [Тема 9. Иерархия классов](topics/09-class-hierarchies/index.md)
++ [Лекция 1. Стандартная библиотека Python и Go](topics/09-class-hierarchies/lecture-01-stdlib.md)<br/>Встроенные функции, основные модули `sys`, `os`, `datetime`, `collections`, `contextlib`, `re`, `json`, `sqlite3`; параллели в Go.
++ [Лекция 2. Шаблоны проектирования](topics/09-class-hierarchies/lecture-02-patterns.md) (4 часа)<br/>Порождающие, структурные, поведенческие шаблоны с примерами на Python и Go.
 
 - Лабораторная работа 1 (6 часов)   
 Создание объектно-ориентированного приложения по индивидуальным заданиям.
 
-## Тема 10. Знакомство с отдельными модулями
-+ [Лекция 1](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t10l1.md)<br/>HTTP-клиент, HTTP-сервер.
-+ [Лекция 2](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t10l2.md)<br/>Регулярные выражения (модуль **re**)
-+ [Лекция 3](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t10l3.md)<br/>SQLite
-- [Лекция 4](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t10l4.md)<br/>Потоки в Python
+## [Тема 10. Стандартные модули Python](topics/10-standard-modules/index.md)
++ [Лекция 1. HTTP-клиент и HTTP-сервер](topics/10-standard-modules/lecture-01-http.md)<br/>`urllib`, `requests`, `net/http` в Go.
++ [Лекция 2. Регулярные выражения](topics/10-standard-modules/lecture-02-regex.md)<br/>Модуль `re` в Python, `regexp` в Go.
++ [Лекция 3. SQLite](topics/10-standard-modules/lecture-03-sqlite.md)<br/>Встраиваемая БД, защита от SQL-инъекций, миграции.
++ [Лекция 4. Конкурентность и потоки](topics/10-standard-modules/lecture-04-concurrency.md)<br/>GIL, `threading`, `asyncio`, горутины и каналы в Go.
 
 - Лабораторная работа 1 (4 часа)   
 Создание проекта с использованием компонентов для работы с текстом.
 - Лабораторная работа 2 (6 часов)   
 Создание проекта с использованием компонентов стандартных диалогов и системы меню.
 
-## Тема 11. ~~Разработка оконного приложения~~
-- [Лекция 1](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t11l1.md)<br/>Логгирование (logging)
-- [Лекция 2](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t11l2.md)<br/>
-~~Создание интерфейса приложения. Разработка функциональной схемы работы приложения.~~
-django
-- [Лекция 3](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t11l3.md)<br/>
-~~Создание процедур обработки событий.~~
-django
-- [Лекция 4](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t11l4.md)<br/>
-~~Компиляция и запуск приложения. Условная компиляция. Компиляция из командной строки.~~
-Компиляция в standalone?
+## [Тема 11. Разработка приложений](topics/11-application-development/index.md)
++ [Лекция 1. Логирование](topics/11-application-development/lecture-01-logging.md)<br/>Модуль `logging` в Python, `log/slog` в Go.
+- *Лекция 2. Django — основы фреймворка.* В разработке.
+- *Лекция 3. Django — обработка событий и API.* В разработке.
+- *Лекция 4. Компиляция в standalone.* В разработке.
 
 - Лабораторная работа 1 (4 часа)   
 Разработка оконного приложения. 
 - Лабораторная работа 2 (4 часа)   
 Разработка оконного приложения с несколькими формами.
 
-## Тема 12. Оформление, проверка, отладка кода программы
-- [Лекция 1](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/t12l1.md)<br/>
-Оформление, проверка, отладка кода программы. Выполнение проверки, отладка кода программы. Тестирование: модульное, функциональное.
-unittest
+## [Тема 12. Качество кода и тестирование](topics/12-code-quality-and-testing/index.md)
++ [Лекция 1. Качество кода и тестирование](topics/12-code-quality-and-testing/lecture-01-testing.md)<br/>
+`unittest` и `pytest` в Python, встроенный `testing` в Go, параметризация, fixtures, табличные тесты, покрытие.
 
 - Лабораторная работа 2 (4 часа)   
 Оформление, отладка кода программы.

@@ -1,14 +1,13 @@
 # Тема 10. Стандартные модули Python (Standard Modules)
 
-!!! info "В разработке"
-    Содержимое темы переносится из [`articles/`](https://github.com/jtprogru/mti-oaip-lectures/tree/main/articles).
+Тема рассматривает важные модули стандартной библиотеки Python: работа с HTTP (плюс `requests`), регулярные выражения, встроенная БД SQLite, многопоточность и конкурентность. Для каждого раздела даётся параллель в Go (`net/http`, `regexp`, `database/sql`, горутины и каналы).
 
 ## Лекции
 
-- **Лекция 1.** HTTP-клиент, HTTP-сервер.
-- **Лекция 2.** Регулярные выражения (модуль `re`).
-- **Лекция 3.** SQLite.
-- **Лекция 4.** Потоки в Python.
+- [Лекция 1. HTTP-клиент и HTTP-сервер](lecture-01-http.md) — `urllib`, `requests`, `net/http` в Go, аутентификация, таймауты, обработка ошибок.
+- [Лекция 2. Регулярные выражения](lecture-02-regex.md) — модуль `re`, шаблоны, квантификаторы, флаги; пакет `regexp` в Go (RE2).
+- [Лекция 3. SQLite](lecture-03-sqlite.md) — встраиваемая БД, `sqlite3` в Python, `database/sql` в Go, защита от SQL-инъекций, миграции.
+- [Лекция 4. Многопоточность и конкурентность](lecture-04-concurrency.md) — `threading`, GIL, `concurrent.futures` в Python; горутины и каналы в Go, `sync.WaitGroup`, `context`.
 
 ## Лабораторные работы
 
