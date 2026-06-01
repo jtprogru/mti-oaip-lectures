@@ -82,7 +82,12 @@ nav:
           - topics/02-languages-and-methods/index.md
           - "Лекция 1. Языки и системы программирования": topics/02-languages-and-methods/lecture-01-languages.md
           - "Лекция 2. Методы программирования и SDLC": topics/02-languages-and-methods/lecture-02-methods.md
-      - "Тема 3. Python — основы": topics/03-python-basics/index.md
+      - "Тема 3. Python — основы":
+          - topics/03-python-basics/index.md
+          - "Лекция 1. Синтаксис и типы данных": topics/03-python-basics/lecture-01-syntax-types.md
+          - "Лекция 2. Управляющие конструкции и I/O": topics/03-python-basics/lecture-02-control-flow-io.md
+          - "Лекция 3. Коллекции": topics/03-python-basics/lecture-03-collections.md
+          - "Лекция 4. Кодировки, байты, машинное представление": topics/03-python-basics/lecture-04-encodings-bytes.md
       - "Тема 4. Процедуры и файлы":
           - topics/04-procedures-and-files/index.md
           - "Лекция 1. Функции и область видимости": topics/04-procedures-and-files/lecture-01-functions.md
