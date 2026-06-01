@@ -78,11 +78,17 @@ nav:
           - "Лекция 1. Основные понятия": topics/01-algorithm-basics/lecture-01-basics.md
           - "Лекция 2. Алгоритмические конструкции": topics/01-algorithm-basics/lecture-02-constructs.md
           - "Лекции 3–4. Логические основы": topics/01-algorithm-basics/lecture-03-logic.md
-      - "Тема 2. Языки и методы": topics/02-languages-and-methods/index.md
+      - "Тема 2. Языки и методы":
+          - topics/02-languages-and-methods/index.md
+          - "Лекция 1. Языки и системы программирования": topics/02-languages-and-methods/lecture-01-languages.md
+          - "Лекция 2. Методы программирования и SDLC": topics/02-languages-and-methods/lecture-02-methods.md
       - "Тема 3. Python — основы": topics/03-python-basics/index.md
       - "Тема 4. Процедуры и файлы": topics/04-procedures-and-files/index.md
       - "Тема 5. Библиотеки и модули": topics/05-libraries-and-modules/index.md
-      - "Тема 6. ООП": topics/06-oop-principles/index.md
+      - "Тема 6. ООП":
+          - topics/06-oop-principles/index.md
+          - "Лекция 1. Базовые понятия ООП": topics/06-oop-principles/lecture-01-oop-basics.md
+          - "Лекция 2. Событийная модель и компоненты": topics/06-oop-principles/lecture-02-event-driven.md
       - "Тема 7. VS Code": topics/07-ide-vscode/index.md
       - "Тема 8. Этапы разработки": topics/08-app-development-stages/index.md
       - "Тема 9. Иерархия классов": topics/09-class-hierarchies/index.md
