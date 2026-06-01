@@ -1,0 +1,2724 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Материалы курса «Основы алгоритмизации и программирования» (МТИ, ОАиП)" name="description"/>
+<link href="https://jtprogru.github.io/mti-oaip-lectures/practice/version-control/" rel="canonical"/>
+<link href="../cheatsheet/" rel="prev"/>
+<link href="../../tickets/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<title>Системы контроля версий и Git - Основы алгоритмизации и программирования</title>
+<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#git">
+          Перейти к содержанию
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Верхний колонтитул" class="md-header__inner md-grid">
+<a aria-label="Основы алгоритмизации и программирования" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Основы алгоритмизации и программирования">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Основы алгоритмизации и программирования
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Системы контроля версий и Git
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Тёмная тема" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Тёмная тема">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="Светлая тема" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Светлая тема">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Поиск" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Поиск" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Поиск" class="md-search__options">
+<button aria-label="Очистить" class="md-search__icon md-icon" tabindex="-1" title="Очистить" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/jtprogru/mti-oaip-lectures" title="Перейти к репозиторию">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    jtprogru/mti-oaip-lectures
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Вкладки" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../topics/01-algorithm-basics/">
+          
+  
+  
+  Темы
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../labs/">
+        
+  
+  
+    
+  
+  Лабораторные
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../">
+          
+  
+  
+  Практика
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tickets/">
+        
+  
+  
+    
+  
+  Билеты
+
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Навигация" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Основы алгоритмизации и программирования" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Основы алгоритмизации и программирования">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Основы алгоритмизации и программирования
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/jtprogru/mti-oaip-lectures" title="Перейти к репозиторию">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    jtprogru/mti-oaip-lectures
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Темы
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Темы
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 1. Алгоритмизация
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 1. Алгоритмизация
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/01-algorithm-basics/">
+<span class="md-ellipsis">
+    
+  
+    Тема 1. Основные принципы алгоритмизации и программирования (Algorithm Basics)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/01-algorithm-basics/lecture-01-basics/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Основные понятия
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/01-algorithm-basics/lecture-02-constructs/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Алгоритмические конструкции
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/01-algorithm-basics/lecture-03-logic/">
+<span class="md-ellipsis">
+    
+  
+    Лекции 3–4. Логические основы
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 2. Языки и методы
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 2. Языки и методы
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/02-languages-and-methods/">
+<span class="md-ellipsis">
+    
+  
+    Тема 2. Языки и методы программирования (Languages and Methods)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/02-languages-and-methods/lecture-01-languages/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Языки и системы программирования
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/02-languages-and-methods/lecture-02-methods/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Методы программирования и SDLC
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 3. Python — основы
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 3. Python — основы
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/03-python-basics/">
+<span class="md-ellipsis">
+    
+  
+    Тема 3. Программирование на Python (Python Basics)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/03-python-basics/lecture-01-syntax-types/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Синтаксис и типы данных
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/03-python-basics/lecture-02-control-flow-io/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Управляющие конструкции и I/O
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/03-python-basics/lecture-03-collections/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 3. Коллекции
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/03-python-basics/lecture-04-encodings-bytes/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 4. Кодировки, байты, машинное представление
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 4. Процедуры и файлы
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 4. Процедуры и файлы
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/04-procedures-and-files/">
+<span class="md-ellipsis">
+    
+  
+    Тема 4. Подпрограммы и работа с файлами (Procedures and Files)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/04-procedures-and-files/lecture-01-functions/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Функции и область видимости
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/04-procedures-and-files/lecture-02-strings-recursion/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Строки и рекурсия
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/04-procedures-and-files/lecture-03-files/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 3. Работа с файлами
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/04-procedures-and-files/lecture-04-binary-random-access/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 4. Бинарные файлы и произвольный доступ
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 5. Библиотеки и модули
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 5. Библиотеки и модули
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/05-libraries-and-modules/">
+<span class="md-ellipsis">
+    
+  
+    Тема 5. Библиотеки и модули (Libraries and Modules)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/05-libraries-and-modules/lecture-01-modules-packages/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Модули, пакеты и зависимости
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 6. ООП
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 6. ООП
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/06-oop-principles/">
+<span class="md-ellipsis">
+    
+  
+    Тема 6. Основные принципы объектно-ориентированного программирования (OOP Principles)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/06-oop-principles/lecture-01-oop-basics/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Базовые понятия ООП
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/06-oop-principles/lecture-02-event-driven/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Событийная модель и компоненты
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/06-oop-principles/lecture-03-solid/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 3. SOLID-принципы
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 7. VS Code
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 7. VS Code
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/07-ide-vscode/">
+<span class="md-ellipsis">
+    
+  
+    Тема 7. Среда разработки: Visual Studio Code (IDE — VS Code)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/07-ide-vscode/lecture-01-setup/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. VS Code: установка и настройка
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/07-ide-vscode/lecture-02-cli-args/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Параметры командной строки
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/07-ide-vscode/lecture-03-errors-decorators/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 3. Ошибки, исключения, декораторы
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 8. Этапы разработки
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 8. Этапы разработки
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/08-app-development-stages/">
+<span class="md-ellipsis">
+    
+  
+    Тема 8. Этапы разработки приложения (Application Development Stages)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/08-app-development-stages/lecture-01-tkinter/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. GUI на Tkinter
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/08-app-development-stages/lecture-02-pyqt/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. GUI на PyQt и Qt Designer
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/08-app-development-stages/lecture-03-web-ui/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 3. Web-обёртка как UI
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 9. Иерархия классов
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 9. Иерархия классов
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/09-class-hierarchies/">
+<span class="md-ellipsis">
+    
+  
+    Тема 9. Иерархия классов (Class Hierarchies)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/09-class-hierarchies/lecture-01-stdlib/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Стандартная библиотека
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/09-class-hierarchies/lecture-02-patterns/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Шаблоны проектирования
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 10. Стандартные модули
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 10. Стандартные модули
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/10-standard-modules/">
+<span class="md-ellipsis">
+    
+  
+    Тема 10. Стандартные модули Python (Standard Modules)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/10-standard-modules/lecture-01-http/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. HTTP-клиент и HTTP-сервер
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/10-standard-modules/lecture-02-regex/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Регулярные выражения
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/10-standard-modules/lecture-03-sqlite/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 3. SQLite
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/10-standard-modules/lecture-04-concurrency/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 4. Конкурентность и потоки
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 11. Разработка приложений
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_11">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 11. Разработка приложений
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/11-application-development/">
+<span class="md-ellipsis">
+    
+  
+    Тема 11. Разработка приложений (Application Development)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/11-application-development/lecture-01-logging/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Логирование
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/11-application-development/lecture-02-django-basics/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Django — основы
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/11-application-development/lecture-03-django-events-api/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 3. Django — формы и API
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/11-application-development/lecture-04-standalone/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 4. Компиляция в standalone
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 12. Качество кода
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_12">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 12. Качество кода
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/12-code-quality-and-testing/">
+<span class="md-ellipsis">
+    
+  
+    Тема 12. Качество кода и тестирование (Code Quality and Testing)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/12-code-quality-and-testing/lecture-01-testing/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Тестирование
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/12-code-quality-and-testing/lecture-02-advanced-testing/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Продвинутое тестирование
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 13. Go — основы
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_13_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_13">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 13. Go — основы
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/13-golang-basics/">
+<span class="md-ellipsis">
+    
+  
+    Тема 13. Основы Go (Golang Basics)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/13-golang-basics/lecture-01-intro/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Знакомство с Go
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/13-golang-basics/lecture-02-types-control-flow/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Типы и управляющие конструкции
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/13-golang-basics/lecture-03-functions-errors/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 3. Функции и ошибки
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/13-golang-basics/lecture-04-composite-types/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 4. Композитные типы
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/13-golang-basics/lecture-05-methods-interfaces/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 5. Методы и интерфейсы
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/13-golang-basics/lecture-06-packages-testing/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 6. Пакеты и тестирование
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Тема 14. Go — продвинутый
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_14_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_14">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Тема 14. Go — продвинутый
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/14-golang-advanced/">
+<span class="md-ellipsis">
+    
+  
+    Тема 14. Продвинутый Go (Golang Advanced)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/14-golang-advanced/lecture-01-concurrency/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 1. Конкурентность
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/14-golang-advanced/lecture-02-context/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 2. Context
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/14-golang-advanced/lecture-03-http/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 3. HTTP-клиент и сервер
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/14-golang-advanced/lecture-04-files-json-db/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 4. Файлы, JSON, БД
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../topics/14-golang-advanced/lecture-05-benchmarks-pprof/">
+<span class="md-ellipsis">
+    
+  
+    Лекция 5. Бенчмарки и pprof
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../labs/">
+<span class="md-ellipsis">
+    
+  
+    Лабораторные
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Практика
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Практика
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Практика
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../practice/">
+<span class="md-ellipsis">
+    
+  
+    Распределённая система оплаты
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cheatsheet/">
+<span class="md-ellipsis">
+    
+  
+    Шпаргалка
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Системы контроля версий и Git
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Системы контроля версий и Git
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Содержание" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      
+        Что такое контроль версий
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        Виды СКВ
+      
+    </span>
+</a>
+<nav aria-label="Виды СКВ" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        Локальные (исторический интерес)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cvs-subversion-perforce">
+<span class="md-ellipsis">
+      
+        Централизованные (CVS, Subversion, Perforce)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-mercurial-bazaar">
+<span class="md-ellipsis">
+      
+        Распределённые (Git, Mercurial, Bazaar)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git_1">
+<span class="md-ellipsis">
+      
+        Особенности Git
+      
+    </span>
+</a>
+<nav aria-label="Особенности Git" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        Почти все операции — локальные
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        Целостность данных
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      
+        Чаще всего данные только добавляются
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      
+        Три состояния файлов
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git_2">
+<span class="md-ellipsis">
+      
+        Установка Git
+      
+    </span>
+</a>
+<nav aria-label="Установка Git" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#macos">
+<span class="md-ellipsis">
+      
+        macOS
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linux">
+<span class="md-ellipsis">
+      
+        Linux
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#windows">
+<span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      
+        Первоначальная настройка
+      
+    </span>
+</a>
+<nav aria-label="Первоначальная настройка" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      
+        Имя и почта
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      
+        Редактор по умолчанию
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      
+        Современные удобства
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ssh-githubgitlab">
+<span class="md-ellipsis">
+      
+        SSH-ключи для GitHub/GitLab
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      
+        Выбор хостинга
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      
+        Базовые команды
+      
+    </span>
+</a>
+<nav aria-label="Базовые команды" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      
+        Создание репозитория
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      
+        Статус и история
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_16">
+<span class="md-ellipsis">
+      
+        Добавление и коммит
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_17">
+<span class="md-ellipsis">
+      
+        Игнорирование файлов
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_18">
+<span class="md-ellipsis">
+      
+        Удаление и переименование
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_19">
+<span class="md-ellipsis">
+      
+        Отмена изменений
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_20">
+<span class="md-ellipsis">
+      
+        Просмотр изменений
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_21">
+<span class="md-ellipsis">
+      
+        Работа с удалёнными репозиториями
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_22">
+<span class="md-ellipsis">
+      
+        Ветвление
+      
+    </span>
+</a>
+<nav aria-label="Ветвление" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#workflow">
+<span class="md-ellipsis">
+      
+        Популярные workflow
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conventional-commits">
+<span class="md-ellipsis">
+      
+        Conventional Commits
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_23">
+<span class="md-ellipsis">
+      
+        Полезные команды
+      
+    </span>
+</a>
+<nav aria-label="Полезные команды" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stash">
+<span class="md-ellipsis">
+      
+        Stash — отложить изменения
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cherry-pick">
+<span class="md-ellipsis">
+      
+        Cherry-pick — взять конкретный коммит
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflog">
+<span class="md-ellipsis">
+      
+        Reflog — спасение жизни
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bisect">
+<span class="md-ellipsis">
+      
+        Bisect — двоичный поиск регрессии
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_24">
+<span class="md-ellipsis">
+      
+        Чего НЕ нужно делать
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_25">
+<span class="md-ellipsis">
+      
+        Современные дополнения
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_26">
+<span class="md-ellipsis">
+      
+        Где учиться дальше
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_27">
+<span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tickets/">
+<span class="md-ellipsis">
+    
+  
+    Билеты
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Содержание" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      
+        Что такое контроль версий
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        Виды СКВ
+      
+    </span>
+</a>
+<nav aria-label="Виды СКВ" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        Локальные (исторический интерес)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cvs-subversion-perforce">
+<span class="md-ellipsis">
+      
+        Централизованные (CVS, Subversion, Perforce)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-mercurial-bazaar">
+<span class="md-ellipsis">
+      
+        Распределённые (Git, Mercurial, Bazaar)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git_1">
+<span class="md-ellipsis">
+      
+        Особенности Git
+      
+    </span>
+</a>
+<nav aria-label="Особенности Git" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        Почти все операции — локальные
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        Целостность данных
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      
+        Чаще всего данные только добавляются
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      
+        Три состояния файлов
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git_2">
+<span class="md-ellipsis">
+      
+        Установка Git
+      
+    </span>
+</a>
+<nav aria-label="Установка Git" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#macos">
+<span class="md-ellipsis">
+      
+        macOS
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linux">
+<span class="md-ellipsis">
+      
+        Linux
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#windows">
+<span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      
+        Первоначальная настройка
+      
+    </span>
+</a>
+<nav aria-label="Первоначальная настройка" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      
+        Имя и почта
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      
+        Редактор по умолчанию
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      
+        Современные удобства
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ssh-githubgitlab">
+<span class="md-ellipsis">
+      
+        SSH-ключи для GitHub/GitLab
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      
+        Выбор хостинга
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      
+        Базовые команды
+      
+    </span>
+</a>
+<nav aria-label="Базовые команды" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      
+        Создание репозитория
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      
+        Статус и история
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_16">
+<span class="md-ellipsis">
+      
+        Добавление и коммит
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_17">
+<span class="md-ellipsis">
+      
+        Игнорирование файлов
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_18">
+<span class="md-ellipsis">
+      
+        Удаление и переименование
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_19">
+<span class="md-ellipsis">
+      
+        Отмена изменений
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_20">
+<span class="md-ellipsis">
+      
+        Просмотр изменений
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_21">
+<span class="md-ellipsis">
+      
+        Работа с удалёнными репозиториями
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_22">
+<span class="md-ellipsis">
+      
+        Ветвление
+      
+    </span>
+</a>
+<nav aria-label="Ветвление" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#workflow">
+<span class="md-ellipsis">
+      
+        Популярные workflow
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conventional-commits">
+<span class="md-ellipsis">
+      
+        Conventional Commits
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_23">
+<span class="md-ellipsis">
+      
+        Полезные команды
+      
+    </span>
+</a>
+<nav aria-label="Полезные команды" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stash">
+<span class="md-ellipsis">
+      
+        Stash — отложить изменения
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cherry-pick">
+<span class="md-ellipsis">
+      
+        Cherry-pick — взять конкретный коммит
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflog">
+<span class="md-ellipsis">
+      
+        Reflog — спасение жизни
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bisect">
+<span class="md-ellipsis">
+      
+        Bisect — двоичный поиск регрессии
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_24">
+<span class="md-ellipsis">
+      
+        Чего НЕ нужно делать
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_25">
+<span class="md-ellipsis">
+      
+        Современные дополнения
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_26">
+<span class="md-ellipsis">
+      
+        Где учиться дальше
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_27">
+<span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/jtprogru/mti-oaip-lectures/edit/main/docs/practice/version-control.md" rel="edit" title="Редактировать страницу">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="git">Системы контроля версий и Git<a class="headerlink" href="#git" title="Permanent link">¶</a></h1>
+<p>На каком бы языке программирования вы ни работали — в команде, фрилансером или для себя — без системы контроля версий не обойтись. Эта статья — короткий обзор Git и его экосистемы.</p>
+<h2 id="_1">Что такое контроль версий<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p><strong>Система контроля версий</strong> (СКВ, VCS — Version Control System) регистрирует изменения файлов так, чтобы в любой момент можно было:</p>
+<ul>
+<li>вернуться к предыдущей версии,</li>
+<li>сравнить две версии и понять, что изменилось,</li>
+<li>работать вместе с другими разработчиками без конфликтов,</li>
+<li>хранить полную историю проекта.</li>
+</ul>
+<p>Типичный сценарий: выложили новую версию в продакшен, начали работать над новыми фичами — и вдруг обнаружили баг в старой. Нужно вернуться к рабочей версии, исправить и не потерять начатую работу. СКВ это делает естественно.</p>
+<p>Без СКВ многие пытаются обойтись копированием каталогов (<code>my_project_v1</code>, <code>my_project_v2_final</code>, <code>my_project_FINAL_FINAL</code>). Минусы такого подхода:</p>
+<ul>
+<li><strong>избыточность:</strong> дублируется весь код, а не только изменения;</li>
+<li><strong>нет коллективной работы:</strong> двум людям невозможно править одновременно;</li>
+<li><strong>нет истории:</strong> непонятно, что именно изменилось и зачем.</li>
+</ul>
+<h2 id="_2">Виды СКВ<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="_3">Локальные (исторический интерес)<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p>Первые СКВ — например, <strong>RCS</strong> (1985) — хранили историю в локальной БД. Решали только проблему избыточности (через дельта-компрессию).</p>
+<h3 id="cvs-subversion-perforce">Централизованные (CVS, Subversion, Perforce)<a class="headerlink" href="#cvs-subversion-perforce" title="Permanent link">¶</a></h3>
+<p>Один центральный сервер хранит все версии, клиенты получают копии нужных. Долго были стандартом индустрии. Недостатки:</p>
+<ul>
+<li>сервер — единая точка отказа;</li>
+<li>нет работы оффлайн (всё через сервер);</li>
+<li>сложно ветвиться и сливать.</li>
+</ul>
+<h3 id="git-mercurial-bazaar">Распределённые (Git, Mercurial, Bazaar)<a class="headerlink" href="#git-mercurial-bazaar" title="Permanent link">¶</a></h3>
+<p>Каждый клиент имеет <strong>полную копию репозитория со всей историей</strong>. Сервер (если есть) — точка синхронизации, а не единый источник истины. Преимущества:</p>
+<ul>
+<li>работа оффлайн;</li>
+<li>быстрые локальные операции;</li>
+<li>любой клон может стать новым центральным репозиторием;</li>
+<li>мощное ветвление и слияние.</li>
+</ul>
+<p>На сегодня <strong>Git</strong> — стандарт де-факто (~95% open-source проектов). В этой статье говорим только про Git.</p>
+<h2 id="git_1">Особенности Git<a class="headerlink" href="#git_1" title="Permanent link">¶</a></h2>
+<h3 id="_4">Почти все операции — локальные<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<p>Чтобы посмотреть историю, сделать коммит или сравнить версии, Git'у не нужен сервер. Это:</p>
+<ul>
+<li>очень быстро (история — в <code>.git/</code>);</li>
+<li>работает без интернета (в поезде, в самолёте);</li>
+<li>сетевые операции — только <code>push</code>/<code>pull</code>/<code>fetch</code>.</li>
+</ul>
+<h3 id="_5">Целостность данных<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<p>Каждый объект Git (файл, коммит, дерево) идентифицируется по <strong>SHA-1</strong> (с переходом на SHA-256). Невозможно незаметно изменить файл — Git это заметит. Контрольные суммы — фундамент архитектуры Git.</p>
+<h3 id="_6">Чаще всего данные только добавляются<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<p>Практически любая операция Git'а <strong>добавляет</strong> данные в репозиторий, а не удаляет. Это значит:</p>
+<ul>
+<li>отменить операцию обычно можно — данные ещё в <code>.git/</code>;</li>
+<li>ошибки восстанавливаются (через <code>reflog</code>);</li>
+<li>редкие «по-настоящему опасные» команды — <code>git reset --hard</code>, <code>git push --force</code>, <code>git clean -fd</code>.</li>
+</ul>
+<h3 id="_7">Три состояния файлов<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<p>Это ключевое для понимания Git'а. Файл может находиться в одном из трёх состояний:</p>
+<table>
+<thead>
+<tr>
+<th>Состояние</th>
+<th>Что значит</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Modified</strong> (изменён)</td>
+<td>поменялся, но не подготовлен к коммиту</td>
+</tr>
+<tr>
+<td><strong>Staged</strong> (подготовлен)</td>
+<td>отмечен для следующего коммита</td>
+</tr>
+<tr>
+<td><strong>Committed</strong> (зафиксирован)</td>
+<td>сохранён в локальной базе</td>
+</tr>
+</tbody>
+</table>
+<p>Стандартный workflow:</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Рабочий каталог] --&gt;|git add| B[Индекс / staging]
+    B --&gt;|git commit| C[Локальный репозиторий]
+    C --&gt;|git push| D[Удалённый репозиторий]
+    D --&gt;|git pull / fetch| C
+</code></pre>
+<h2 id="git_2">Установка Git<a class="headerlink" href="#git_2" title="Permanent link">¶</a></h2>
+<h3 id="macos">macOS<a class="headerlink" href="#macos" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># через Homebrew</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>brew<span class="w"> </span>install<span class="w"> </span>git
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># или через Xcode CLT</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>xcode-select<span class="w"> </span>--install
+</code></pre></div>
+<h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># Debian/Ubuntu</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1"># Fedora/RHEL</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>git
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="c1"># Arch</span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>git
+</code></pre></div>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">¶</a></h3>
+<p>Скачайте инсталлятор с <a href="https://gitforwindows.org">gitforwindows.org</a>. В комплекте — <code>git</code>, <strong>Git Bash</strong> (Unix-подобный shell), SSH-клиент и (опционально) графические инструменты.</p>
+<p>После установки проверьте версию:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>git<span class="w"> </span>--version
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1"># git version 2.45.0</span>
+</code></pre></div>
+<h2 id="_8">Первоначальная настройка<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
+<p>Git хранит настройки в трёх уровнях:</p>
+<ul>
+<li><code>--system</code> — для всех пользователей системы;</li>
+<li><code>--global</code> — для текущего пользователя (хранятся в <code>~/.gitconfig</code>);</li>
+<li>по умолчанию — для конкретного репозитория (<code>.git/config</code>).</li>
+</ul>
+<h3 id="_9">Имя и почта<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
+<p>Каждый коммит содержит автора. Установите имя и email <strong>до</strong> первого коммита:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Имя Фамилия"</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span>you@example.com
+</code></pre></div>
+<h3 id="_10">Редактор по умолчанию<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">"code --wait"</span><span class="w">     </span><span class="c1"># VS Code</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">"vim"</span><span class="w">             </span><span class="c1"># Vim</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">"nano"</span><span class="w">            </span><span class="c1"># Nano</span>
+</code></pre></div>
+<h3 id="_11">Современные удобства<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1"># Имя ветки по умолчанию</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1"># Цветной вывод</span>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>color.ui<span class="w"> </span>auto
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="c1"># Авто-rebase при pull (избегает мёрж-коммитов)</span>
+<a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>pull.rebase<span class="w"> </span><span class="nb">true</span>
+<a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a>
+<a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="c1"># Сохранять учётные данные на 1 час</span>
+<a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>credential.helper<span class="w"> </span><span class="s2">"cache --timeout=3600"</span>
+<a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a>
+<a href="#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="c1"># На macOS — использовать Keychain</span>
+<a href="#__codelineno-5-14" id="__codelineno-5-14" name="__codelineno-5-14"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>credential.helper<span class="w"> </span>osxkeychain
+<a href="#__codelineno-5-15" id="__codelineno-5-15" name="__codelineno-5-15"></a>
+<a href="#__codelineno-5-16" id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="c1"># Включить интеллектуальную обработку line endings</span>
+<a href="#__codelineno-5-17" id="__codelineno-5-17" name="__codelineno-5-17"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.autocrlf<span class="w"> </span>input<span class="w">    </span><span class="c1"># macOS / Linux</span>
+<a href="#__codelineno-5-18" id="__codelineno-5-18" name="__codelineno-5-18"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.autocrlf<span class="w"> </span><span class="nb">true</span><span class="w">     </span><span class="c1"># Windows</span>
+</code></pre></div>
+<h3 id="ssh-githubgitlab">SSH-ключи для GitHub/GitLab<a class="headerlink" href="#ssh-githubgitlab" title="Permanent link">¶</a></h3>
+<p>Аутентификация по паролю давно устарела. Используйте SSH:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1"># Создать ключ</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">"you@example.com"</span>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="c1"># Запустить агент и добавить ключ</span>
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">"</span>
+<a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>ssh-add<span class="w"> </span>~/.ssh/id_ed25519
+<a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a>
+<a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="c1"># Скопировать публичный ключ</span>
+<a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a>cat<span class="w"> </span>~/.ssh/id_ed25519.pub<span class="w">        </span><span class="c1"># вставьте на GitHub → Settings → SSH keys</span>
+</code></pre></div>
+<p>Проверка:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="c1"># Hi username! You've successfully authenticated.</span>
+</code></pre></div>
+<h2 id="_12">Выбор хостинга<a class="headerlink" href="#_12" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Хостинг</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Самый популярный, активная экосистема, бесплатные приватные репо.</td>
+</tr>
+<tr>
+<td><strong>GitLab</strong></td>
+<td>Cloud + self-hosted, встроенный CI/CD, есть бесплатная версия Community Edition.</td>
+</tr>
+<tr>
+<td><strong>Codeberg</strong></td>
+<td>Некоммерческий, fork Gitea, без слежки и без AI-обучения на коде.</td>
+</tr>
+<tr>
+<td><strong>Bitbucket</strong></td>
+<td>От Atlassian, тесно интегрирован с Jira.</td>
+</tr>
+<tr>
+<td><strong>Собственный</strong></td>
+<td>Gitea, GitLab CE, Forgejo — если нужны полный контроль и конфиденциальность.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_13">Базовые команды<a class="headerlink" href="#_13" title="Permanent link">¶</a></h2>
+<h3 id="_14">Создание репозитория<a class="headerlink" href="#_14" title="Permanent link">¶</a></h3>
+<p><strong>Способ 1: с нуля</strong></p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>mkdir<span class="w"> </span>my-project<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>my-project
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>git<span class="w"> </span>init
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>git<span class="w"> </span>add<span class="w"> </span>README.md
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Initial commit"</span>
+</code></pre></div>
+<p><strong>Способ 2: клонирование существующего</strong></p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/user/repo.git
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:user/repo.git<span class="w">              </span><span class="c1"># через SSH</span>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/user/repo.git<span class="w"> </span>my-dir<span class="w">   </span><span class="c1"># в свой каталог</span>
+</code></pre></div>
+<h3 id="_15">Статус и история<a class="headerlink" href="#_15" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>git<span class="w"> </span>status<span class="w">              </span><span class="c1"># что изменилось</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>git<span class="w"> </span>status<span class="w"> </span>-s<span class="w">           </span><span class="c1"># короткий формат</span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a>git<span class="w"> </span>log<span class="w">                 </span><span class="c1"># история коммитов</span>
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w">       </span><span class="c1"># компактно</span>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline<span class="w"> </span>--all<span class="w">  </span><span class="c1"># с ветками</span>
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a>
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a>git<span class="w"> </span>diff<span class="w">                </span><span class="c1"># неподготовленные изменения</span>
+<a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a>git<span class="w"> </span>diff<span class="w"> </span>--staged<span class="w">       </span><span class="c1"># подготовленные изменения</span>
+<a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a>git<span class="w"> </span>diff<span class="w"> </span>main..feature<span class="w">  </span><span class="c1"># между ветками</span>
+</code></pre></div>
+<h3 id="_16">Добавление и коммит<a class="headerlink" href="#_16" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>git<span class="w"> </span>add<span class="w"> </span>file.txt<span class="w">        </span><span class="c1"># один файл</span>
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>git<span class="w"> </span>add<span class="w"> </span>src/<span class="w">            </span><span class="c1"># каталог</span>
+<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a>git<span class="w"> </span>add<span class="w"> </span>-p<span class="w">              </span><span class="c1"># интерактивно по кускам (patch mode)</span>
+<a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a>git<span class="w"> </span>add<span class="w"> </span>.<span class="w">               </span><span class="c1"># всё в текущем каталоге (осторожно!)</span>
+<a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a>
+<a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: добавил поиск"</span>
+<a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a>git<span class="w"> </span>commit<span class="w">               </span><span class="c1"># откроет редактор для многострочного сообщения</span>
+<a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"fix"</span><span class="w">     </span><span class="c1"># add + commit для отслеживаемых файлов</span>
+</code></pre></div>
+<h3 id="_17">Игнорирование файлов<a class="headerlink" href="#_17" title="Permanent link">¶</a></h3>
+<p>Создайте файл <code>.gitignore</code> в корне:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a># Комментарий — эта строка игнорируется
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a># Python
+<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a>__pycache__/
+<a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a>*.pyc
+<a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a>.venv/
+<a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a>.env
+<a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a>
+<a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a># Go
+<a href="#__codelineno-12-10" id="__codelineno-12-10" name="__codelineno-12-10"></a>/bin/
+<a href="#__codelineno-12-11" id="__codelineno-12-11" name="__codelineno-12-11"></a>*.exe
+<a href="#__codelineno-12-12" id="__codelineno-12-12" name="__codelineno-12-12"></a>
+<a href="#__codelineno-12-13" id="__codelineno-12-13" name="__codelineno-12-13"></a># IDE
+<a href="#__codelineno-12-14" id="__codelineno-12-14" name="__codelineno-12-14"></a>.idea/
+<a href="#__codelineno-12-15" id="__codelineno-12-15" name="__codelineno-12-15"></a>.vscode/
+<a href="#__codelineno-12-16" id="__codelineno-12-16" name="__codelineno-12-16"></a>
+<a href="#__codelineno-12-17" id="__codelineno-12-17" name="__codelineno-12-17"></a># Логи и временные
+<a href="#__codelineno-12-18" id="__codelineno-12-18" name="__codelineno-12-18"></a>*.log
+<a href="#__codelineno-12-19" id="__codelineno-12-19" name="__codelineno-12-19"></a>*.tmp
+<a href="#__codelineno-12-20" id="__codelineno-12-20" name="__codelineno-12-20"></a>.DS_Store
+<a href="#__codelineno-12-21" id="__codelineno-12-21" name="__codelineno-12-21"></a>
+<a href="#__codelineno-12-22" id="__codelineno-12-22" name="__codelineno-12-22"></a># Скомпилированные
+<a href="#__codelineno-12-23" id="__codelineno-12-23" name="__codelineno-12-23"></a>build/
+<a href="#__codelineno-12-24" id="__codelineno-12-24" name="__codelineno-12-24"></a>dist/
+<a href="#__codelineno-12-25" id="__codelineno-12-25" name="__codelineno-12-25"></a>
+<a href="#__codelineno-12-26" id="__codelineno-12-26" name="__codelineno-12-26"></a># Отслеживать lib.a, даже если игнорируем все .a
+<a href="#__codelineno-12-27" id="__codelineno-12-27" name="__codelineno-12-27"></a>*.a
+<a href="#__codelineno-12-28" id="__codelineno-12-28" name="__codelineno-12-28"></a>!lib.a
+</code></pre></div>
+<p>Готовые шаблоны для языков и инструментов: <a href="https://github.com/github/gitignore">github.com/github/gitignore</a>.</p>
+<h3 id="_18">Удаление и переименование<a class="headerlink" href="#_18" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>git<span class="w"> </span>rm<span class="w"> </span>file.txt<span class="w">              </span><span class="c1"># удалить и убрать из индекса</span>
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>secrets.env<span class="w">  </span><span class="c1"># убрать из индекса, оставить на диске</span>
+<a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a>git<span class="w"> </span>mv<span class="w"> </span>old.txt<span class="w"> </span>new.txt<span class="w">       </span><span class="c1"># переименовать</span>
+</code></pre></div>
+<h3 id="_19">Отмена изменений<a class="headerlink" href="#_19" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>git<span class="w"> </span>restore<span class="w"> </span>file.txt<span class="w">              </span><span class="c1"># отменить неподготовленные изменения файла</span>
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>file.txt<span class="w">     </span><span class="c1"># снять с индекса (не удалить изменения)</span>
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>git<span class="w"> </span>restore<span class="w"> </span>--source<span class="o">=</span>HEAD~1<span class="w"> </span>file.txt<span class="w">  </span><span class="c1"># вернуть файл из предыдущего коммита</span>
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a>
+<a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a>git<span class="w"> </span>revert<span class="w"> </span>&lt;commit&gt;<span class="w">               </span><span class="c1"># создать новый коммит, обращающий указанный</span>
+<a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a>git<span class="w"> </span>reset<span class="w"> </span>HEAD~1<span class="w">                  </span><span class="c1"># «отменить» последний коммит (мягко — изменения остаются)</span>
+<a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~1<span class="w">           </span><span class="c1"># отменить ПОЛНОСТЬЮ (осторожно!)</span>
+</code></pre></div>
+<h3 id="_20">Просмотр изменений<a class="headerlink" href="#_20" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>git<span class="w"> </span>show<span class="w"> </span>&lt;commit&gt;<span class="w">                 </span><span class="c1"># детали коммита</span>
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>git<span class="w"> </span>blame<span class="w"> </span>file.txt<span class="w">                </span><span class="c1"># кто и когда менял каждую строку</span>
+<a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a>git<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span>file.txt<span class="w">               </span><span class="c1"># история изменений конкретного файла</span>
+<a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a>git<span class="w"> </span>log<span class="w"> </span>-S<span class="w"> </span><span class="s2">"string"</span><span class="w">               </span><span class="c1"># коммиты, добавившие/убравшие строку</span>
+</code></pre></div>
+<h2 id="_21">Работа с удалёнными репозиториями<a class="headerlink" href="#_21" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>git<span class="w"> </span>remote<span class="w"> </span>-v<span class="w">                                    </span><span class="c1"># список удалённых</span>
+<a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:u/r.git<span class="w">    </span><span class="c1"># добавить</span>
+<a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a>git<span class="w"> </span>remote<span class="w"> </span>remove<span class="w"> </span>origin<span class="w">                         </span><span class="c1"># удалить</span>
+<a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a>git<span class="w"> </span>remote<span class="w"> </span>rename<span class="w"> </span>origin<span class="w"> </span>upstream<span class="w">                </span><span class="c1"># переименовать</span>
+<a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a>
+<a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a>git<span class="w"> </span>fetch<span class="w"> </span>origin<span class="w">                                 </span><span class="c1"># забрать обновления, не сливая</span>
+<a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main<span class="w">                             </span><span class="c1"># fetch + merge (или rebase)</span>
+<a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main<span class="w">                             </span><span class="c1"># отправить ветку</span>
+<a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feature-x<span class="w">                     </span><span class="c1"># отправить и установить tracking</span>
+<a href="#__codelineno-16-10" id="__codelineno-16-10" name="__codelineno-16-10"></a>git<span class="w"> </span>push<span class="w"> </span>--force-with-lease<span class="w">                      </span><span class="c1"># безопасный force-push</span>
+</code></pre></div>
+<blockquote>
+<p><strong><code>--force</code> vs <code>--force-with-lease</code>:</strong> <code>--force</code> перезаписывает удалённую ветку безусловно — можно случайно затереть чужую работу. <code>--force-with-lease</code> проверяет, что вы видели последние изменения и не перезатрёте чужой push. Всегда используйте именно <code>--force-with-lease</code>.</p>
+</blockquote>
+<h2 id="_22">Ветвление<a class="headerlink" href="#_22" title="Permanent link">¶</a></h2>
+<p>Главная сила Git'а — лёгкое и быстрое ветвление.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>git<span class="w"> </span>branch<span class="w">                       </span><span class="c1"># список локальных веток</span>
+<a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a>git<span class="w"> </span>branch<span class="w"> </span>-a<span class="w">                    </span><span class="c1"># с удалёнными</span>
+<a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a>git<span class="w"> </span>branch<span class="w"> </span>feature-x<span class="w">             </span><span class="c1"># создать ветку</span>
+<a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a>git<span class="w"> </span>switch<span class="w"> </span>feature-x<span class="w">             </span><span class="c1"># переключиться (современная команда)</span>
+<a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a>git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feature-y<span class="w">          </span><span class="c1"># создать + переключиться</span>
+<a href="#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a>git<span class="w"> </span>checkout<span class="w"> </span>feature-x<span class="w">           </span><span class="c1"># старая команда переключения</span>
+<a href="#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a>
+<a href="#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a>git<span class="w"> </span>merge<span class="w"> </span>feature-x<span class="w">              </span><span class="c1"># слить в текущую ветку</span>
+<a href="#__codelineno-17-9" id="__codelineno-17-9" name="__codelineno-17-9"></a>git<span class="w"> </span>merge<span class="w"> </span>--no-ff<span class="w"> </span>feature-x<span class="w">      </span><span class="c1"># с явным merge-коммитом</span>
+<a href="#__codelineno-17-10" id="__codelineno-17-10" name="__codelineno-17-10"></a>git<span class="w"> </span>rebase<span class="w"> </span>main<span class="w">                  </span><span class="c1"># перебазировать текущую ветку на main</span>
+<a href="#__codelineno-17-11" id="__codelineno-17-11" name="__codelineno-17-11"></a>
+<a href="#__codelineno-17-12" id="__codelineno-17-12" name="__codelineno-17-12"></a>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feature-x<span class="w">          </span><span class="c1"># удалить слитую ветку</span>
+<a href="#__codelineno-17-13" id="__codelineno-17-13" name="__codelineno-17-13"></a>git<span class="w"> </span>branch<span class="w"> </span>-D<span class="w"> </span>feature-x<span class="w">          </span><span class="c1"># удалить принудительно (даже несли́тую)</span>
+<a href="#__codelineno-17-14" id="__codelineno-17-14" name="__codelineno-17-14"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--delete<span class="w"> </span>feature-x<span class="w">  </span><span class="c1"># удалить удалённую ветку</span>
+</code></pre></div>
+<h3 id="workflow">Популярные workflow<a class="headerlink" href="#workflow" title="Permanent link">¶</a></h3>
+<p><strong>GitHub Flow</strong> — простой и популярный:</p>
+<ol>
+<li>Создаём ветку от <code>main</code>.</li>
+<li>Коммитим изменения.</li>
+<li>Открываем Pull Request.</li>
+<li>Получаем review, обсуждаем, исправляем.</li>
+<li>Сливаем в <code>main</code>.</li>
+<li>Удаляем ветку.</li>
+</ol>
+<p><strong>Git Flow</strong> (более сложный, для релизных циклов):</p>
+<ul>
+<li><code>main</code> — продакшен;</li>
+<li><code>develop</code> — основная ветка разработки;</li>
+<li><code>feature/*</code>, <code>release/*</code>, <code>hotfix/*</code> — короткоживущие ветки.</li>
+</ul>
+<p>Для большинства проектов GitHub Flow проще и хватает.</p>
+<h2 id="conventional-commits">Conventional Commits<a class="headerlink" href="#conventional-commits" title="Permanent link">¶</a></h2>
+<p>Современная конвенция для сообщений коммитов:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+<a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>
+<a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a>&lt;body&gt;
+<a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a>
+<a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a>&lt;footer&gt;
+</code></pre></div>
+<p>Типы:</p>
+<ul>
+<li><code>feat:</code> — новая фича;</li>
+<li><code>fix:</code> — исправление бага;</li>
+<li><code>docs:</code> — изменения только в документации;</li>
+<li><code>style:</code> — форматирование, без логики;</li>
+<li><code>refactor:</code> — переделка без изменения поведения;</li>
+<li><code>test:</code> — добавление/изменение тестов;</li>
+<li><code>chore:</code> — рутинная работа (зависимости, конфиги);</li>
+<li><code>build:</code> — изменения в сборке;</li>
+<li><code>ci:</code> — CI/CD-конфиги.</li>
+</ul>
+<p>Примеры:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>feat(auth): добавить вход по Google
+<a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a>
+<a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a>fix(api): исправить race condition в обработчике webhook
+<a href="#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a>
+<a href="#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a>docs(readme): обновить инструкцию запуска
+<a href="#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a>
+<a href="#__codelineno-19-7" id="__codelineno-19-7" name="__codelineno-19-7"></a>refactor: вынести вычисление цены в отдельный модуль
+<a href="#__codelineno-19-8" id="__codelineno-19-8" name="__codelineno-19-8"></a>
+<a href="#__codelineno-19-9" id="__codelineno-19-9" name="__codelineno-19-9"></a>BREAKING CHANGE: переименовали /api/users в /api/v2/users
+</code></pre></div>
+<p>Зачем это нужно:</p>
+<ul>
+<li>читаемая история;</li>
+<li>автоматическая генерация changelog;</li>
+<li>автоматическое определение версии (по <code>feat:</code> минорная, по <code>fix:</code> патч, по <code>BREAKING CHANGE</code> мажорная).</li>
+</ul>
+<h2 id="_23">Полезные команды<a class="headerlink" href="#_23" title="Permanent link">¶</a></h2>
+<h3 id="stash">Stash — отложить изменения<a class="headerlink" href="#stash" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>git<span class="w"> </span>stash<span class="w">                        </span><span class="c1"># отложить все незакоммиченные изменения</span>
+<a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a>git<span class="w"> </span>stash<span class="w"> </span>list<span class="w">                   </span><span class="c1"># список «отложенных»</span>
+<a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a>git<span class="w"> </span>stash<span class="w"> </span>pop<span class="w">                    </span><span class="c1"># вернуть последние и удалить из stash</span>
+<a href="#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a>git<span class="w"> </span>stash<span class="w"> </span>apply<span class="w">                  </span><span class="c1"># вернуть, но оставить в stash</span>
+<a href="#__codelineno-20-5" id="__codelineno-20-5" name="__codelineno-20-5"></a>git<span class="w"> </span>stash<span class="w"> </span>drop<span class="w">                   </span><span class="c1"># удалить последний</span>
+<a href="#__codelineno-20-6" id="__codelineno-20-6" name="__codelineno-20-6"></a>git<span class="w"> </span>stash<span class="w"> </span>push<span class="w"> </span>-m<span class="w"> </span><span class="s2">"wip auth"</span><span class="w">     </span><span class="c1"># с описанием</span>
+</code></pre></div>
+<p>Сценарий: вы работаете над фичей, но срочно нужно исправить баг в <code>main</code>. <code>git stash</code> → переключаетесь в <code>main</code> → правите баг → возвращаетесь → <code>git stash pop</code>.</p>
+<h3 id="cherry-pick">Cherry-pick — взять конкретный коммит<a class="headerlink" href="#cherry-pick" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>git<span class="w"> </span>cherry-pick<span class="w"> </span>&lt;commit-sha&gt;<span class="w">     </span><span class="c1"># применить один коммит из другой ветки</span>
+</code></pre></div>
+<h3 id="reflog">Reflog — спасение жизни<a class="headerlink" href="#reflog" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>git<span class="w"> </span>reflog<span class="w">                       </span><span class="c1"># история всех HEAD-перемещений</span>
+<a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD@<span class="o">{</span><span class="m">3</span><span class="o">}</span><span class="w">        </span><span class="c1"># вернуться к тому, что было «3 шага назад»</span>
+</code></pre></div>
+<p>Reflog хранит локально все перемещения HEAD в течение ~90 дней. Если случайно сделали <code>git reset --hard</code> и потеряли коммиты — почти наверняка их можно вернуть через reflog.</p>
+<h3 id="bisect">Bisect — двоичный поиск регрессии<a class="headerlink" href="#bisect" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>git<span class="w"> </span>bisect<span class="w"> </span>start
+<a href="#__codelineno-23-2" id="__codelineno-23-2" name="__codelineno-23-2"></a>git<span class="w"> </span>bisect<span class="w"> </span>bad<span class="w">                   </span><span class="c1"># текущий коммит — сломан</span>
+<a href="#__codelineno-23-3" id="__codelineno-23-3" name="__codelineno-23-3"></a>git<span class="w"> </span>bisect<span class="w"> </span>good<span class="w"> </span>v1.0<span class="w">             </span><span class="c1"># v1.0 — работала</span>
+<a href="#__codelineno-23-4" id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="c1"># Git переключает на середину истории; вы тестируете и говорите good/bad</span>
+<a href="#__codelineno-23-5" id="__codelineno-23-5" name="__codelineno-23-5"></a>git<span class="w"> </span>bisect<span class="w"> </span>good<span class="w">                  </span><span class="c1"># или git bisect bad</span>
+<a href="#__codelineno-23-6" id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="c1"># ... повторяете, пока Git не найдёт виновный коммит</span>
+<a href="#__codelineno-23-7" id="__codelineno-23-7" name="__codelineno-23-7"></a>git<span class="w"> </span>bisect<span class="w"> </span>reset<span class="w">                 </span><span class="c1"># выйти из режима bisect</span>
+</code></pre></div>
+<p>Незаменим для поиска регрессий в большой истории.</p>
+<h2 id="_24">Чего НЕ нужно делать<a class="headerlink" href="#_24" title="Permanent link">¶</a></h2>
+<ul>
+<li>⛔ <strong>Коммитить секреты</strong> (пароли, токены, приватные ключи). Если случайно — токен скомпрометирован, история всё равно содержит его навсегда. Используйте <code>git secrets</code>, <code>gitleaks</code> или pre-commit хуки.</li>
+<li>⛔ <strong><code>git push --force</code> в общую ветку</strong> (<code>main</code>, <code>develop</code>). Используйте <code>--force-with-lease</code> и только для собственных feature-веток.</li>
+<li>⛔ <strong>Хранить большие бинарные файлы в Git</strong>. Используйте Git LFS, S3 или другое внешнее хранилище.</li>
+<li>⛔ <strong>Очень большие коммиты</strong> «через раз». Лучше много маленьких атомарных коммитов.</li>
+<li>⛔ <strong><code>git pull --rebase</code> в общей ветке после push</strong>. Если уже отправили — теперь только мёрж.</li>
+</ul>
+<h2 id="_25">Современные дополнения<a class="headerlink" href="#_25" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong><a href="https://cli.github.com/">GitHub CLI (<code>gh</code>)</a></strong> — работать с PR, issues, актами и релизами из терминала: <code>gh pr create</code>, <code>gh issue list</code>, <code>gh repo clone</code>.</li>
+<li><strong><a href="https://github.com/jesseduffield/lazygit">lazygit</a></strong> — TUI для Git с горячими клавишами для всех операций.</li>
+<li><strong><a href="https://jonas.github.io/tig/">tig</a></strong> — просмотрщик истории в терминале.</li>
+<li><strong><a href="https://github.com/dandavison/delta">delta</a></strong> — красивый цветной diff поверх Git.</li>
+<li><strong><a href="https://pre-commit.com/">pre-commit</a></strong> — фреймворк для запуска хуков перед коммитом (линтер, форматтер, проверка секретов).</li>
+<li><strong><a href="https://typicode.github.io/husky/">husky</a></strong> — то же для проектов на Node.js/TypeScript.</li>
+</ul>
+<h2 id="_26">Где учиться дальше<a class="headerlink" href="#_26" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://git-scm.com/book/ru/v2">Pro Git</a> — официальная книга, переведена на русский.</li>
+<li><a href="https://learngitbranching.js.org/">Learn Git Branching</a> — визуальный интерактивный туториал.</li>
+<li><a href="https://skills.github.com/">GitHub Skills</a> — официальные курсы.</li>
+<li><a href="https://ohshitgit.com/">Oh Shit, Git!?!</a> — как откатить типичные косяки.</li>
+</ul>
+<hr/>
+<h2 id="_27">Контрольные вопросы<a class="headerlink" href="#_27" title="Permanent link">¶</a></h2>
+<ul>
+<li>В чём принципиальное отличие распределённой СКВ от централизованной?</li>
+<li>Какие три состояния файла бывают в Git и через какие команды они переходят?</li>
+<li>Чем <code>git pull</code> отличается от <code>git fetch</code>?</li>
+<li>Что такое <code>--force-with-lease</code> и почему он безопаснее обычного <code>--force</code>?</li>
+<li>Когда применять <code>git merge</code>, а когда <code>git rebase</code>?</li>
+<li>Что хранит файл <code>.gitignore</code> и какие шаблоны он поддерживает?</li>
+<li>Что такое Conventional Commits и какие плюсы они дают?</li>
+<li>Как восстановить случайно удалённый коммит?</li>
+<li>Зачем нужен <code>git bisect</code>?</li>
+<li>Какие данные <strong>никогда</strong> не должны попадать в Git-репозиторий?</li>
+</ul>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="Последнее обновление">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="1 июня 2026 г. 13:50:49 UTC">2026-06-01</span>
+</span>
+</aside>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  К началу
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>
