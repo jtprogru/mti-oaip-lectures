@@ -83,8 +83,15 @@ nav:
           - "Лекция 1. Языки и системы программирования": topics/02-languages-and-methods/lecture-01-languages.md
           - "Лекция 2. Методы программирования и SDLC": topics/02-languages-and-methods/lecture-02-methods.md
       - "Тема 3. Python — основы": topics/03-python-basics/index.md
-      - "Тема 4. Процедуры и файлы": topics/04-procedures-and-files/index.md
-      - "Тема 5. Библиотеки и модули": topics/05-libraries-and-modules/index.md
+      - "Тема 4. Процедуры и файлы":
+          - topics/04-procedures-and-files/index.md
+          - "Лекция 1. Функции и область видимости": topics/04-procedures-and-files/lecture-01-functions.md
+          - "Лекция 2. Строки и рекурсия": topics/04-procedures-and-files/lecture-02-strings-recursion.md
+          - "Лекция 3. Работа с файлами": topics/04-procedures-and-files/lecture-03-files.md
+          - "Лекция 4. Бинарные файлы и произвольный доступ": topics/04-procedures-and-files/lecture-04-binary-random-access.md
+      - "Тема 5. Библиотеки и модули":
+          - topics/05-libraries-and-modules/index.md
+          - "Лекция 1. Модули, пакеты и зависимости": topics/05-libraries-and-modules/lecture-01-modules-packages.md
       - "Тема 6. ООП":
           - topics/06-oop-principles/index.md
           - "Лекция 1. Базовые понятия ООП": topics/06-oop-principles/lecture-01-oop-basics.md
