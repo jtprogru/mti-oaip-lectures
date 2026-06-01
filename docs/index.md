@@ -101,8 +101,8 @@
 - Лабораторная работа 2 (4 часа)   
 Оформление, отладка кода программы.
 
-[Задание на практику](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/практика.md)
+[Задание на практику](practice/practice.md) — большой сквозной проект «распределённая система оплаты услуг» с GUI, HTTP, БД, логированием и тестами.
 
-Внеклассное чтение: [системы контроля версий](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/skv.md)
+Дополнительно: [шпаргалка по типам и scope](practice/cheatsheet.md), [системы контроля версий и Git](practice/version-control.md).
 
-## [Экзаменационные билеты](https://github.com/jtprogru/mti-oaip-lectures/blob/main/articles/tickets.md)
+## [Экзаменационные билеты](tickets/index.md)
